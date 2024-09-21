@@ -1,0 +1,35 @@
+import React, { createContext, useReducer, useContext } from 'react';
+
+// Initial State
+const initialState = { count: 0 };
+
+// Reducer Function
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+// Create Context
+const GlobalStateContext = createContext();
+
+// Global State Provider
+export const GlobalStateProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <GlobalStateContext.Provider value={{ state, dispatch }}>
+      {children}
+    </GlobalStateContext.Provider>
+  );
+};
+
+// Custom Hook to Use Global State
+export const useGlobalState = () => {
+  return useContext(GlobalStateContext);
+};
