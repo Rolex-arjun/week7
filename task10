@@ -1,0 +1,19 @@
+import React, { useState } from 'react';
+
+const PropsVsState = ({ initialPropValue }) => {
+  const [stateValue, setStateValue] = useState('Initial State Value');
+
+  const updateStateValue = () => {
+    setStateValue('Updated State Value');
+  };
+
+  return (
+    <div>
+      <h2>Prop Value: {initialPropValue}</h2>
+      <h2>State Value: {stateValue}</h2>
+      <button onClick={updateStateValue}>Update State</button>
+    </div>
+  );
+};
+
+export default PropsVsState;
