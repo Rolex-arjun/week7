@@ -1,0 +1,28 @@
+import React, { useState, useEffect } from 'react';
+
+const AutoSaveForm = () => {
+  const [formData, setFormData] = useState(() => {
+    return JSON.parse(localStorage.getItem('formData')) || '';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [formData]); // Save to localStorage whenever formData changes
+
+  const handleChange = (event) => {
+    setFormData(event.target.value);
+  };
+
+  return (
+    <div>
+      <input 
+        type="text" 
+        value={formData} 
+        onChange={handleChange} 
+        placeholder="Enter something..." 
+      />
+    </div>
+  );
+};
+
+export default AutoSaveForm;
