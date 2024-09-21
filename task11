@@ -1,0 +1,20 @@
+import React, { useState } from 'react';
+import ChildA from './ChildA';
+import ChildB from './ChildB';
+
+const ParentComponent = () => {
+  const [sharedState, setSharedState] = useState('Shared State');
+
+  const updateSharedState = (newState) => {
+    setSharedState(newState);
+  };
+
+  return (
+    <div>
+      <ChildA sharedState={sharedState} updateState={updateSharedState} />
+      <ChildB sharedState={sharedState} />
+    </div>
+  );
+};
+
+export default ParentComponent;
