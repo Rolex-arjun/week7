@@ -1,0 +1,17 @@
+import React, { Component } from 'react';
+
+class LifecycleDemo extends Component {
+  componentDidMount() {
+    console.log('Component did mount');
+  }
+
+  componentWillUnmount() {
+    console.log('Component will unmount');
+  }
+
+  render() {
+    return <h1>Lifecycle Methods Demo</h1>;
+  }
+}
+
+export default LifecycleDemo;
