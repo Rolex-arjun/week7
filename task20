@@ -1,0 +1,23 @@
+import React from 'react';
+
+const EventPropagation = () => {
+  const handleParentClick = () => {
+    console.log('Parent clicked!');
+  };
+
+  const handleChildClick = (e) => {
+    e.stopPropagation(); // Prevents the event from bubbling up to the parent
+    console.log('Child clicked!');
+  };
+
+  return (
+    <div onClick={handleParentClick} style={{ padding: '20px', border: '2px solid black' }}>
+      Parent
+      <div onClick={handleChildClick} style={{ marginTop: '10px', padding: '10px', border: '2px solid red' }}>
+        Child
+      </div>
+    </div>
+  );
+};
+
+export default EventPropagation;
