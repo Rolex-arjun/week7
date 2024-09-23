@@ -1,0 +1,27 @@
+import React, { useState } from 'react';
+
+const EventHandlingComponent = () => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleClick = () => {
+    alert(`Button clicked! Input value: ${inputValue}`);
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleChange}
+        placeholder="Type something"
+      />
+      <button onClick={handleClick}>Click Me</button>
+    </div>
+  );
+};
+
+export default EventHandlingComponent;
