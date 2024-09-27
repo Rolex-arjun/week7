@@ -5,3 +5,20 @@ function ConditionalRendering({ isLoggedIn }) {
     return <h1>Please log in.</h1>;
   }
 }
+//ternary
+function TernaryRendering({ isLoggedIn }) {
+  return (
+    <div>
+      {isLoggedIn ? <h1>Welcome back!</h1> : <h1>Please sign in.</h1>}
+    </div>
+  );
+}
+//short circuit
+function ShortCircuitRendering({ user }) {
+  return (
+    <div>
+      {user && <h1>Hello, {user.name}!</h1>}
+      {!user && <h1>No user logged in</h1>}
+    </div>
+  );
+}
