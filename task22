@@ -1,0 +1,7 @@
+function ConditionalRendering({ isLoggedIn }) {
+  if (isLoggedIn) {
+    return <h1>Welcome back, user!</h1>;
+  } else {
+    return <h1>Please log in.</h1>;
+  }
+}
