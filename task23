@@ -1,0 +1,59 @@
+function ItemList({ items }) {
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+}
+
+function UserCards({ users }) {
+  return (
+    <div>
+      {users.map(user => (
+        <div key={user.id} className="user-card">
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+import { useState } from 'react';
+
+function DynamicList() {
+  const [items, setItems] = useState(['Item 1', 'Item 2']);
+  const [newItem, setNewItem] = useState('');
+
+  const addItem = () => {
+    if (newItem.trim()) {
+      setItems([...items, newItem]);
+      setNewItem('');
+    }
+  };
+
+  const removeItem = (index) => {
+    setItems(items.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div>
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>
+            {item} <button onClick={() => removeItem(index)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+      <input 
+        type="text" 
+        value={newItem} 
+        onChange={(e) => setNewItem(e.target.value)} 
+        placeholder="Add new item" 
+      />
+      <button onClick={addItem}>Add Item</button>
+    </div>
+  );
+}
