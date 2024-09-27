@@ -1,0 +1,45 @@
+function ControlledForm() {
+  const [formData, setFormData] = useState({ text: '', checkbox: false, select: '' });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(JSON.stringify(formData, null, 2));
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Text: </label>
+        <input type="text" name="text" value={formData.text} onChange={handleChange} />
+      </div>
+      <div>
+        <label>
+          <input 
+            type="checkbox" 
+            name="checkbox" 
+            checked={formData.checkbox} 
+            onChange={handleChange} 
+          />
+          Checkbox
+        </label>
+      </div>
+      <div>
+        <label>Select: </label>
+        <select name="select" value={formData.select} onChange={handleChange}>
+          <option value="">Select an option</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+        </select>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
